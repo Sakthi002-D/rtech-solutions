@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="title desc">
+  <title id="title">R-Tech Solutions</title>
+  <desc id="desc">R-Tech Solutions company logo</desc>
+  <g transform="translate(12 9)">
+    <path d="M45 10c-15 0-28 5-37 15l5 12c-4 10-4 19 0 29L8 78c9 11 22 17 37 17s28-6 37-17l-5-12c4-10 4-19 0-29l5-12C73 15 60 10 45 10Z" fill="#111111" stroke="#8b102a" stroke-width="8"/>
+    <circle cx="45" cy="51" r="31" fill="#ffffff" stroke="#111111" stroke-width="3"/>
+    <text x="45" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="45" fill="#111111">R</text>
+    <circle cx="16" cy="17" r="6" fill="#ffffff" stroke="#111111" stroke-width="3"/>
+    <circle cx="74" cy="17" r="6" fill="#ffffff" stroke="#111111" stroke-width="3"/>
+    <circle cx="16" cy="85" r="6" fill="#9eb5a7" stroke="#111111" stroke-width="3"/>
+    <circle cx="74" cy="85" r="6" fill="#9eb5a7" stroke="#111111" stroke-width="3"/>
+  </g>
+  <text x="104" y="94" font-family="Arial, Helvetica, sans-serif" font-size="69" letter-spacing="-2.5" fill="#000000">R-TECH</text>
+  <text x="269" y="121" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="1" fill="#000000">SOLUTIONS</text>
+</svg>
