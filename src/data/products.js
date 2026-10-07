@@ -76,10 +76,10 @@ export const products = [
     category: 'Vibration control',
     shortDescription:
       'Rubber bushes for isolation, cushioning, and controlled movement in industrial and mechanical assemblies.',
-    types: ['Cylindrical', 'Flanged', 'Spherical', 'Custom Moulded'],
+    types: ['Cylindrical', 'Flanged', 'Spherical', 'custom_moulded'],
     technicalInfo: [
       'Application-based dimensions',
-      'Custom moulded requirements',
+      'custom_moulded requirements',
       'Material selection guidance',
     ],
   },
@@ -125,7 +125,7 @@ export const products = [
     category: 'Custom manufacturing',
     shortDescription:
       'Tailor-made rubber parts produced to meet application-specific dimensions, materials, and performance requirements.',
-    types: ['Custom Moulded', 'Application Specific', 'Prototype to Production'],
+    types: ['custom_moulded', 'Application Specific', 'Prototype to Production'],
     technicalInfo: [
       'Part drawings and dimensions',
       'Material specification',

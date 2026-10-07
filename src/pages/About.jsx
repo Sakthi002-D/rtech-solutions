@@ -1,173 +1,364 @@
-import logo from '../assets/images/rtech-logo.png'
-
-const approachSteps = [
-  ['01', 'Understand the Application'],
-  ['02', 'Select the Right Polymer'],
-  ['03', 'Choose the Right Sealing Solution'],
-  ['04', 'Quality & Performance Checks'],
-  ['05', 'Technical Support'],
-]
-
-const bringsTogether = [
-  ['01', 'Material Knowledge', 'Understanding different polymer options for different application requirements.'],
-  ['02', 'Sealing Expertise', 'Focused on rubber and industrial sealing solutions.'],
-  ['03', 'Custom Capability', 'Custom-made and moulded rubber components for specific requirements.'],
-  ['04', 'Quality Commitment', 'Quality focused on product performance and safety.'],
-]
-
-const whyRTech = [
-  ['Application-Focused Solutions', 'Solutions based on application requirements.'],
-  ['Tailor-Made Support', 'Solutions developed around specific customer requirements.'],
-  ['Technical Support', 'Support related to product and application needs.'],
-  ['Long-Term Partnership', 'Building customer relationships through trust, reliability and excellence.'],
-]
-
-const values = [
-  ['Quality First', 'Every product goes through rigorous checks for performance and safety.'],
-  ['Customer Focus', 'Tailor-made solutions with delivery and technical support.'],
-  ['Innovation', 'Continuous improvement to meet evolving industry challenges.'],
-]
+import "./About.css";
+import logo from "../assets/images/rtech-logo.png";
 
 function About() {
   return (
-    <main className="page about-page">
-      <section className="about-hero about-reveal">
-        <div className="about-hero-copy">
-          <p className="about-eyebrow">ABOUT R-TECH</p>
-          <h1>Engineering Reliability Into Every Seal</h1>
-          <p className="about-lead">
-            R-Tech Solutions brings together rubber and polymer expertise, sealing
-            solutions and application-focused product selection for demanding
-            industrial requirements.
-          </p>
-        </div>
+    <main className="about-page">
 
-        <div className="about-hero-visual" aria-label="R-Tech Solutions brand visual">
-          <div className="about-hero-grid" />
-          <div className="about-hero-ring about-hero-ring-one" />
-          <div className="about-hero-ring about-hero-ring-two" />
-          <img src={logo} alt="R-Tech Solutions" />
-          <span className="about-hero-index">R / 01</span>
+      {/* =========================
+          HERO
+      ========================= */}
+
+      <section className="about-hero">
+        <div className="about-container about-hero-inner">
+
+          <div className="about-hero-content">
+            <p className="about-label">ABOUT R-TECH</p>
+
+            <h1>
+              Rubber &amp; Polymer
+              <br />
+              Engineering
+              <br />
+              Solutions.
+            </h1>
+
+            <p className="about-hero-text">
+              R-Tech Solutions is a trusted name in rubber and polymer
+              engineering, specializing in high-quality sealing and
+              industrial rubber products.
+            </p>
+          </div>
+
+          <div className="about-hero-visual">
+            <div className="about-grid"></div>
+
+            <div className="about-circle about-circle-one"></div>
+            <div className="about-circle about-circle-two"></div>
+
+            <img
+              src={logo}
+              alt="R-Tech Solutions"
+              className="about-logo"
+            />
+
+            <span className="about-visual-number">
+              01 / ABOUT
+            </span>
+          </div>
+
         </div>
       </section>
 
-      <section className="about-section about-who about-reveal">
-        <div className="about-who-visual">
-          <div className="about-visual-label">RUBBER + POLYMER ENGINEERING</div>
-          <div className="about-visual-mark">R</div>
-          <div className="about-visual-line" />
-          <p>Industrial sealing solutions</p>
-        </div>
-        <div className="about-section-copy">
-          <p className="about-eyebrow">01 / WHO WE ARE</p>
-          <h2>Built around the requirements behind every application.</h2>
-          <p>
-            R-Tech Solutions is a rubber and polymer engineering company specialising
-            in industrial sealing and rubber products. We bring together sealing
-            products and custom-moulded components to support demanding industrial
-            requirements.
-          </p>
-          <p>
-            Our approach begins with understanding the application, then selecting the
-            appropriate polymer and solution for the requirement.
-          </p>
-        </div>
-      </section>
 
-      <section className="about-section about-approach about-reveal">
-        <div className="about-section-heading">
-          <p className="about-eyebrow">02 / HOW WE WORK</p>
-          <h2>The R-Tech Approach</h2>
-          <p>From application understanding to technical support, every step stays focused on the requirement.</p>
-        </div>
-        <div className="about-timeline">
-          {approachSteps.map(([number, title]) => (
-            <div className="about-timeline-step" key={number}>
-              <span className="about-step-number">{number}</span>
-              <span className="about-step-line" />
-              <h3>{title}</h3>
+      {/* =========================
+          WHO WE ARE
+      ========================= */}
+
+      <section className="about-introduction">
+        <div className="about-container">
+
+          <div className="about-section-number">
+            WHO WE ARE
+          </div>
+
+          <div className="about-introduction-content">
+
+            <div className="about-heading">
+              <p className="about-label">
+                R-TECH SOLUTIONS
+              </p>
+
+              <h2>
+                Engineering rubber solutions
+                <span> for demanding applications.</span>
+              </h2>
             </div>
-          ))}
+
+            <div className="about-description">
+              <p>
+                R-Tech Solutions specializes in manufacturing and
+                supplying a wide range of high-quality sealing and
+                industrial rubber products including gaskets, O-rings,
+                washers, hoses, rubber sheets, bushes, bellows, and
+                custom-moulded components.
+              </p>
+
+              <p>
+                With technical expertise, we focus on delivering
+                durable, reliable, and innovative solutions for
+                demanding industrial requirements.
+              </p>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
-      <section className="about-section about-brings about-reveal">
-        <div className="about-section-heading">
-          <p className="about-eyebrow">03 / WHAT WE BRING TOGETHER</p>
-          <h2>Knowledge, products and support in one clear direction.</h2>
-        </div>
-        <div className="about-brings-grid">
-          {bringsTogether.map(([number, title, description]) => (
-            <article className="about-bring-block" key={title}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="about-section about-why about-reveal">
-        <div className="about-section-heading">
-          <p className="about-eyebrow">04 / WHY R-TECH</p>
-          <h2>Dependable thinking for demanding requirements.</h2>
-        </div>
-        <div className="about-why-list">
-          {whyRTech.map(([title, description], index) => (
-            <div className="about-why-item" key={title}>
-              <span>0{index + 1}</span>
+      {/* =========================
+          CAPABILITY
+      ========================= */}
+
+      <section className="about-capability">
+
+        <div className="about-container">
+
+          <div className="about-capability-heading">
+            <p className="about-label">
+              OUR CAPABILITY
+            </p>
+
+            <h2>
+              The right rubber solution
+              <br />
+              for every application.
+            </h2>
+          </div>
+
+          <div className="about-capability-grid">
+
+            <div className="about-capability-item">
+              <span>01</span>
+
               <div>
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <h3>
+                  Rubber &amp; Polymer Engineering
+                </h3>
+
+                <p>
+                  Products are designed using a variety of polymers
+                  to provide the right material for different
+                  application requirements.
+                </p>
               </div>
             </div>
-          ))}
+
+
+            <div className="about-capability-item">
+              <span>02</span>
+
+              <div>
+                <h3>
+                  Sealing Solutions
+                </h3>
+
+                <p>
+                  A wide range of sealing and industrial rubber
+                  products designed for demanding environments
+                  and long-term performance.
+                </p>
+              </div>
+            </div>
+
+
+            <div className="about-capability-item">
+              <span>03</span>
+
+              <div>
+                <h3>
+                  Custom-Moulded Components
+                </h3>
+
+                <p>
+                  Custom-moulded rubber components are available
+                  for specific customer and application
+                  requirements.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
-      <section className="about-quality about-reveal">
-        <div className="about-quality-copy">
-          <p className="about-eyebrow">OUR QUALITY PHILOSOPHY</p>
-          <h2>Quality First</h2>
-          <p>Every product goes through rigorous checks for performance and safety.</p>
+
+      {/* =========================
+          VALUES
+      ========================= */}
+
+      <section className="about-values">
+
+        <div className="about-container">
+
+          <div className="about-values-heading">
+
+            <div>
+              <div className="about-section-number">
+                OUR VALUES
+              </div>
+            </div>
+
+            <h2>
+              What we believe in.
+            </h2>
+
+          </div>
+
+
+          <div className="about-values-list">
+
+            <div className="about-value">
+              <span>01</span>
+
+              <div>
+                <h3>
+                  Quality First
+                </h3>
+
+                <p>
+                  Every product goes through rigorous checks for
+                  performance and safety.
+                </p>
+              </div>
+            </div>
+
+
+            <div className="about-value">
+              <span>02</span>
+
+              <div>
+                <h3>
+                  Customer Focus
+                </h3>
+
+                <p>
+                  Tailor-made solutions with fast delivery and
+                  technical support.
+                </p>
+              </div>
+            </div>
+
+
+            <div className="about-value">
+              <span>03</span>
+
+              <div>
+                <h3>
+                  Innovation
+                </h3>
+
+                <p>
+                  Continuous improvement to meet evolving
+                  industry challenges.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        <div className="about-quality-words" aria-label="Performance, safety, reliability">
-          <span>Performance</span>
-          <span>Safety</span>
-          <span>Reliability</span>
-        </div>
+
       </section>
 
-      <section className="about-section about-values about-reveal">
-        <div className="about-section-heading">
-          <p className="about-eyebrow">05 / OUR VALUES</p>
-          <h2>What We Believe In</h2>
+
+      {/* =========================
+          VISION
+      ========================= */}
+
+      <section className="about-vision">
+
+        <div className="about-container about-vision-inner">
+
+          <div className="about-vision-number">
+            03 / OUR VISION
+          </div>
+
+
+          <div className="about-vision-content">
+
+            <p className="about-label">
+              OUR VISION
+            </p>
+
+            <h2>
+              Engineering a more reliable industrial future.
+            </h2>
+
+            <p className="about-vision-description">
+              To be recognized as a global leader in rubber and
+              sealing solutions by combining technical precision,
+              dependable quality, and long-term partnerships.
+            </p>
+
+
+            <div className="about-vision-points">
+              <span>01 / PRECISION</span>
+              <span>02 / RELIABILITY</span>
+              <span>03 / PARTNERSHIP</span>
+            </div>
+
+          </div>
+
+
+          <div
+            className="about-vision-visual"
+            aria-hidden="true"
+          >
+
+            <div className="about-vision-orbit about-vision-orbit-one"></div>
+
+            <div className="about-vision-orbit about-vision-orbit-two"></div>
+
+            <div className="about-vision-core">
+              R
+            </div>
+
+            <span className="about-vision-tag">
+              BUILT TO LAST
+            </span>
+
+          </div>
+
         </div>
-        <div className="about-values-grid">
-          {values.map(([title, description]) => (
-            <article key={title}>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </article>
-          ))}
-        </div>
+
       </section>
 
-      <section className="about-vision about-reveal">
-        <p className="about-eyebrow">06 / OUR VISION</p>
-        <h2>To be recognized as a global leader in rubber and sealing solutions, building long-term partnerships with clients through trust, reliability, and excellence.</h2>
+
+      {/* =========================
+          CTA
+      ========================= */}
+
+      <section className="about-cta-section">
+
+        <div className="about-container">
+
+          <div className="about-cta">
+
+            <div className="about-cta-content">
+
+              <p className="about-label">
+                LET&apos;S WORK TOGETHER
+              </p>
+
+              <h2>
+                Looking for the right
+                <br />
+                rubber solution?
+              </h2>
+
+            </div>
+
+
+            <a
+              href="/request-a-quote"
+              className="about-cta-button"
+            >
+              REQUEST A QUOTE
+              <span>-&gt;</span>
+            </a>
+
+          </div>
+
+        </div>
+
       </section>
 
-      <section className="about-cta about-reveal">
-        <div>
-          <p className="about-eyebrow">START A CONVERSATION</p>
-          <h2>Looking for the right rubber or sealing solution?</h2>
-          <p>Talk to R-Tech Solutions about your application requirements.</p>
-        </div>
-        <a href="/request-a-quote">Request a Quote <span aria-hidden="true">-&gt;</span></a>
-      </section>
     </main>
-  )
+  );
 }
 
-export default About
+export default About;

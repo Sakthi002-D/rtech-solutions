@@ -1,0 +1,21 @@
+.navbar.navbar::before {
+  display: none !important;
+}
+
+.navbar-curve {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: min(30vw, 400px);
+  height: 100%;
+  overflow: visible;
+  fill: #ffffff;
+  pointer-events: none;
+}
+
+@media (max-width: 1050px) {
+  .navbar-curve {
+    display: none;
+  }
+}

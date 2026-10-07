@@ -1,141 +1,479 @@
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Layers3, Settings, ShieldCheck, Wrench } from "lucide-react";
+
+import gasketsImage from "../assets/images/product-gasket.png";
+import industrialApplicationsImage from "../assets/images/industrial-appplication.png";
+import sheetsImage from "../assets/images/product-sheets.jpg";
+import customMouldedImage from "../assets/images/custom_moulded.png";
+
+import gasketVideo from "../assets/images/product-gaskets.mp4.mp4";
+import oRingsVideo from "../assets/images/product-o-rings.mp4.mp4";
+import hosesVideo from "../assets/images/product-hoses.mp4.mp4";
+import bellowsVideo from "../assets/images/product-bellows.mp4.mp4";
+
+import "./Home.css";
+
+const heroVideos = [
+  {
+    src: gasketVideo,
+    title: "RUBBER GASKETS",
+  },
+  {
+    src: oRingsVideo,
+    title: "O-RINGS",
+  },
+  {
+    src: hosesVideo,
+    title: "RUBBER HOSES",
+  },
+  {
+    src: bellowsVideo,
+    title: "BELLOWS",
+  },
+];
+
+const materials = [
+  "Natural Rubber (NR)",
+  "Nitrile Rubber (NBR)",
+  "EPDM",
+  "Silicone",
+  "Viton / FKM",
+  "Neoprene / CR",
+  "Polyurethane",
+  "PTFE",
+];
+
+const engineeringFeatures = [
+  {
+    icon: Settings,
+    title: "Precision Components",
+    description: "Designed for fit and performance",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Reliable Sealing",
+    description: "Products for critical applications",
+  },
+  {
+    icon: Layers3,
+    title: "Wide Material Selection",
+    description: "Suitable for different operating conditions",
+  },
+  {
+    icon: Wrench,
+    title: "Custom Engineering",
+    description: "Solutions for specific requirements",
+  },
+];
+
+const capabilities = [
+  {
+    title: "Precision Rubber Components",
+    description:
+      "Rubber components developed for fit, sealing and service requirements.",
+  },
+  {
+    title: "Industrial Sealing Solutions",
+    description:
+      "Products for joints, connections, equipment and industrial systems.",
+  },
+  {
+    title: "Custom-Moulded Components",
+    description:
+      "Moulded rubber parts shaped around specific application requirements.",
+  },
+  {
+    title: "Polymer Material Solutions",
+    description:
+      "Material options selected according to operating conditions.",
+  },
+  {
+    title: "Application-Focused Engineering",
+    description:
+      "Product selection guided by the intended application and requirements.",
+  },
+];
+
 function Home() {
+  const [activeVideo, setActiveVideo] = useState(0);
+  const videoRefs = useRef([]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+
+      if (index === activeVideo) {
+        video.currentTime = 0;
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }, [activeVideo]);
+
   return (
     <main className="home-page">
-      <section className="home-hero" aria-labelledby="home-hero-title">
-        <div className="home-hero-inner">
-          <div className="home-hero-content">
-            <p className="home-hero-eyebrow">HIGH QUALITY • MADE IN INDIA</p>
-            <h1 id="home-hero-title">Engineered Rubber &amp; Sealing Solutions</h1>
-            <p className="home-hero-description">
-              High-quality rubber and sealing products designed for demanding industrial applications.
-            </p>
-            <div className="home-hero-actions">
-              <a className="home-hero-primary" href="/products">
-                Explore Products
-                <span aria-hidden="true">-&gt;</span>
-              </a>
-              <a className="home-hero-secondary" href="/request-a-quote">
-                Get a Quote
-              </a>
+
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+
+      <section className="home-hero">
+
+        <div className="home-hero-content">
+          <p className="home-eyebrow">
+            HIGH QUALITY <span>•</span> MADE IN INDIA
+          </p>
+
+          <h1>
+            Engineered Rubber
+            <span>&amp; Sealing Solutions</span>
+          </h1>
+
+          <p className="home-hero-text">
+            High-quality rubber and sealing products designed for demanding
+            industrial applications.
+          </p>
+
+          <div className="home-hero-actions">
+            <Link
+              to="/products"
+              className="home-action home-action-primary"
+            >
+              Explore Products
+              <span>→</span>
+            </Link>
+
+            <Link
+              to="/request-a-quote"
+              className="home-action home-action-outline"
+            >
+              Request a Quote
+              <span>↗</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* HERO VIDEO AREA */}
+        <div className="home-hero-visual">
+
+          <div className="home-hero-video-wrap">
+
+            {heroVideos.map((video, index) => (
+              <video
+                key={video.title}
+                ref={(element) => {
+                  videoRefs.current[index] = element;
+                }}
+                className={`home-hero-video ${
+                  index === activeVideo ? "is-active" : ""
+                }`}
+                src={video.src}
+                muted
+                playsInline
+                preload="metadata"
+                onEnded={() =>
+                  setActiveVideo(
+                    (current) => (current + 1) % heroVideos.length
+                  )
+                }
+              />
+            ))}
+
+            <div className="home-video-overlay" />
+
+            <div className="home-video-product">
+              <span>R-TECH / 0{activeVideo + 1}</span>
+              <strong>{heroVideos[activeVideo].title}</strong>
             </div>
-            <div className="home-hero-meta" aria-label="Product capabilities">
-              <span>Precision manufacturing</span>
-              <span>Industrial grade materials</span>
-            </div>
+
           </div>
 
-          <div className="home-hero-visual" aria-label="Industrial rubber product visual placeholder" role="img">
-            <div className="home-hero-visual-grid" aria-hidden="true" />
-            <div className="home-hero-product" aria-hidden="true">
-              <div className="home-hero-ring home-hero-ring-large" />
-              <div className="home-hero-ring home-hero-ring-small" />
-              <div className="home-hero-seal" />
-            </div>
-            <div className="home-hero-visual-label">
-              <span className="home-hero-label-line" />
-              <span>Industrial product visual</span>
-            </div>
-            <span className="home-hero-visual-index">01 / 01</span>
+          <div className="home-video-progress">
+            {heroVideos.map((video, index) => (
+              <button
+                key={video.title}
+                type="button"
+                className={index === activeVideo ? "active" : ""}
+                onClick={() => setActiveVideo(index)}
+                aria-label={`Show ${video.title}`}
+              />
+            ))}
           </div>
+
         </div>
-      </section>
-      <section className="home-proof" aria-label="R-Tech Solutions capabilities">
-        <div className="home-proof-item">
-          <strong>01</strong>
-          <span>Quality-led production</span>
+
+        <div className="home-hero-footer">
+          <span>R-TECH SOLUTIONS</span>
+          <span>RUBBER &amp; POLYMER ENGINEERING</span>
+          <span>01 — 04</span>
         </div>
-        <div className="home-proof-item">
-          <strong>02</strong>
-          <span>Custom rubber compounds</span>
-        </div>
-        <div className="home-proof-item">
-          <strong>03</strong>
-          <span>Reliable technical support</span>
-        </div>
-        <div className="home-proof-item">
-          <strong>04</strong>
-          <span>Built for industrial use</span>
-        </div>
+
       </section>
 
-      <section className="home-intro page-section">
-        <div className="home-intro-heading">
-          <p className="section-kicker">About R-Tech Solutions</p>
-          <h2>Sealing performance that keeps your operation moving.</h2>
-        </div>
-        <div className="home-intro-copy">
-          <p>
-            R-Tech Solutions manufactures dependable rubber and sealing components
-            for equipment makers, maintenance teams, and industrial suppliers.
-          </p>
-          <p>
-            From material selection to finished parts, we focus on consistent
-            dimensions, practical performance, and solutions that fit the way your
-            business works.
-          </p>
-          <a className="text-link" href="/about">Discover our approach <span aria-hidden="true">-&gt;</span></a>
-        </div>
-      </section>
 
-      <section className="home-offerings page-section" aria-labelledby="home-offerings-title">
-        <div className="section-heading-row">
-          <div>
-            <p className="section-kicker">What we make</p>
-            <h2 id="home-offerings-title">Components made for the details that matter.</h2>
+      {/* =====================================================
+          INTRODUCTION
+      ===================================================== */}
+
+      <section className="home-editorial home-introduction">
+
+        <figure className="home-editorial-image">
+          <img
+            src={gasketsImage}
+            alt="Rubber gaskets for industrial sealing applications"
+            loading="lazy"
+          />
+
+          <figcaption>
+            <span>01</span>
+            <span>ENGINEERING</span>
+          </figcaption>
+        </figure>
+
+        <div className="home-editorial-copy">
+
+          <p className="home-eyebrow">
+            R-TECH SOLUTIONS
+          </p>
+
+          <h2>
+            Rubber &amp;
+            <span>Polymer Engineering</span>
+          </h2>
+
+          <p>
+            R-Tech Solutions specializes in rubber and polymer engineering,
+            supplying rubber and sealing products for demanding industrial
+            applications.
+          </p>
+
+          <p className="home-secondary-text">
+            We provide a comprehensive range of products including gaskets,
+            O-rings, hoses, moulded components, sheets, and custom rubber parts.
+          </p>
+
+          <div className="home-engineering-features">
+            {engineeringFeatures.map((feature) => {
+              const Icon = feature.icon;
+
+              return (
+                <div className="home-engineering-feature" key={feature.title}>
+                  <Icon aria-hidden="true" />
+                  <div>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <a className="text-link" href="/products">View all products <span aria-hidden="true">-&gt;</span></a>
+
+          <Link to="/about" className="home-text-link">
+            DISCOVER R-TECH
+            <span>→</span>
+          </Link>
+
         </div>
-        <div className="home-offering-grid">
-          <a className="home-offering" href="/products/rubber-gaskets">
-            <span className="home-offering-number">01</span>
-            <h3>Gaskets &amp; seals</h3>
-            <p>Reliable sealing parts for assemblies exposed to pressure, heat, and movement.</p>
-            <span className="home-offering-arrow" aria-hidden="true">-&gt;</span>
-          </a>
-          <a className="home-offering" href="/products/o-rings">
-            <span className="home-offering-number">02</span>
-            <h3>O-rings &amp; washers</h3>
-            <p>Consistent, application-ready components for maintenance and OEM requirements.</p>
-            <span className="home-offering-arrow" aria-hidden="true">-&gt;</span>
-          </a>
-          <a className="home-offering" href="/products/rubber-hoses">
-            <span className="home-offering-number">03</span>
-            <h3>Hoses &amp; profiles</h3>
-            <p>Flexible rubber solutions shaped around your operating environment and fit.</p>
-            <span className="home-offering-arrow" aria-hidden="true">-&gt;</span>
-          </a>
-        </div>
+
       </section>
 
-      <section className="home-industries page-section" aria-labelledby="home-industries-title">
-        <div className="home-industries-copy">
-          <p className="section-kicker">Where we work</p>
-          <h2 id="home-industries-title">One dependable partner across demanding industries.</h2>
-          <p>
-            We help teams source rubber parts that are practical to specify,
-            straightforward to reorder, and ready for real working conditions.
+
+      {/* =====================================================
+          ENGINEERED APPLICATIONS
+      ===================================================== */}
+
+      <section className="home-editorial home-capabilities">
+
+        <div className="home-editorial-copy">
+
+          <p className="home-eyebrow">
+            ENGINEERED SOLUTIONS
           </p>
-          <a className="text-link" href="/industries">Explore industries <span aria-hidden="true">-&gt;</span></a>
+
+          <h2>
+            Engineered for
+            <span>Demanding Applications</span>
+          </h2>
+
+          <p className="home-secondary-text">
+            R-Tech Solutions provides rubber and sealing products suited to
+            different industrial applications and operating requirements.
+          </p>
+
+          <div className="home-capability-list">
+
+            {capabilities.map((capability, index) => (
+              <div
+                className="home-capability-row"
+                key={capability.title}
+              >
+                <span className="home-row-number">
+                  0{index + 1}
+                </span>
+
+                <div>
+                  <h3>{capability.title}</h3>
+                  <p>{capability.description}</p>
+                </div>
+              </div>
+            ))}
+
+          </div>
+
         </div>
-        <div className="home-industry-list">
-          <span>Automotive</span>
-          <span>Engineering</span>
-          <span>Fluid handling</span>
-          <span>Industrial equipment</span>
-          <span>Electrical systems</span>
-          <span>Maintenance supply</span>
-        </div>
+
+        <figure className="home-editorial-image">
+
+          <img
+            src={industrialApplicationsImage}
+            alt="Industrial processing plant for demanding applications"
+            loading="lazy"
+          />
+
+          <figcaption>
+            <span>02</span>
+            <span>COMPONENTS</span>
+          </figcaption>
+
+        </figure>
+
       </section>
 
-      <section className="home-cta">
-        <div>
-          <p className="section-kicker">Have a requirement?</p>
-          <h2>Let&apos;s find the right rubber solution for it.</h2>
+
+      {/* =====================================================
+          MATERIALS
+      ===================================================== */}
+
+      <section className="home-editorial home-materials">
+
+        <figure className="home-editorial-image">
+
+          <img
+            src={sheetsImage}
+            alt="Industrial rubber sheet material"
+            loading="lazy"
+          />
+
+          <figcaption>
+            <span>03</span>
+            <span>MATERIALS</span>
+          </figcaption>
+
+        </figure>
+
+        <div className="home-editorial-copy">
+
+          <p className="home-eyebrow">
+            MATERIALS &amp; PERFORMANCE
+          </p>
+
+          <h2>
+            Materials Selected
+            <span>for Performance</span>
+          </h2>
+
+          <p className="home-secondary-text">
+            R-Tech works with a range of rubber and polymer materials for
+            different sealing, temperature and service requirements.
+          </p>
+
+          <div className="home-material-list">
+
+            {materials.map((material, index) => (
+              <div className="home-material-row" key={material}>
+                <span className="home-row-number">
+                  0{index + 1}
+                </span>
+
+                <span>{material}</span>
+              </div>
+            ))}
+
+          </div>
+
+          <Link to="/materials" className="home-text-link">
+            EXPLORE MATERIALS
+            <span>→</span>
+          </Link>
+
         </div>
-        <a className="home-cta-button" href="/request-a-quote">Request a quote <span aria-hidden="true">-&gt;</span></a>
+
       </section>
+
+
+      {/* =====================================================
+          CUSTOM ENGINEERING
+      ===================================================== */}
+
+      <section className="home-editorial home-custom">
+
+        <div className="home-editorial-copy">
+
+          <p className="home-eyebrow">
+            CUSTOM ENGINEERING
+          </p>
+
+          <h2>
+            Rubber Components
+            <span>Built Around Your Application</span>
+          </h2>
+
+          <p>
+            From standard sealing products to custom-moulded rubber
+            components, R-Tech Solutions focuses on practical rubber
+            solutions for industrial requirements.
+          </p>
+
+          <ul className="home-custom-points">
+            <li>
+              <span>01</span>
+              <strong>Precision components</strong>
+            </li>
+            <li>
+              <span>02</span>
+              <strong>Reliable sealing performance</strong>
+            </li>
+            <li>
+              <span>03</span>
+              <strong>Application-specific requirements</strong>
+            </li>
+          </ul>
+
+          <Link to="/products" className="home-text-link">
+            VIEW PRODUCTS
+            <span>→</span>
+          </Link>
+
+        </div>
+
+        <figure className="home-editorial-image">
+
+          <img
+            src={customMouldedImage}
+            alt="Custom-moulded rubber components"
+            loading="lazy"
+          />
+
+          <figcaption>
+            <span>04</span>
+            <span>CUSTOM COMPONENTS</span>
+          </figcaption>
+
+        </figure>
+
+      </section>
+
+
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;

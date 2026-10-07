@@ -1,0 +1,157 @@
+.footer {
+  background: #171717;
+  color: #ffffff;
+  border-top: 1px solid #2d2d2d;
+}
+
+.site-shell > .footer {
+  padding: 0;
+  border-top: 1px solid #353535;
+  text-align: left;
+}
+
+/* Main footer */
+.footer-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 76px 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.9fr;
+  gap: clamp(40px, 7vw, 100px);
+}
+
+/* Company */
+.footer-company {
+  max-width: 360px;
+}
+
+.footer-logo {
+  width: 190px;
+  height: auto;
+  margin-bottom: 28px;
+  background: #ffffff;
+  padding: 8px;
+}
+
+.footer-company p {
+  margin: 0;
+  color: #c7c7c7;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Footer columns */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-column h3 {
+  margin: 0 0 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #9e1230;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+.footer-column a {
+  margin-bottom: 12px;
+  color: #c7c7c7;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #8b102a;
+  transform: translateX(4px);
+}
+
+/* Contact */
+.footer-contact p {
+  margin: 0 0 14px;
+  color: #c7c7c7;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Bottom */
+.footer-bottom {
+  border-top: 1px solid #383838;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #a9a9a9;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #8b102a;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding-inline: 32px;
+  }
+
+  .footer-company {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-inline: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    padding: 55px 20px;
+    gap: 45px;
+  }
+
+  .footer-company {
+    grid-column: auto;
+  }
+
+  .footer-logo {
+    width: 160px;
+  }
+
+  .footer-bottom {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}

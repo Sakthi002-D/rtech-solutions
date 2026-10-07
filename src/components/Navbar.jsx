@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../assets/images/rtech-logo.png'
+import './Navbar.css'
 
 const links = [
   { label: 'Home', to: '/' },
@@ -25,6 +26,9 @@ const products = [
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     function closeWithEscape(event) {
@@ -38,13 +42,33 @@ function Navbar() {
     return () => document.removeEventListener('keydown', closeWithEscape)
   }, [])
 
+  useEffect(() => {
+    if (!isHome) return undefined
+
+    function updateScrollState() {
+      setIsScrolled(window.scrollY > 24)
+    }
+
+    updateScrollState()
+    window.addEventListener('scroll', updateScrollState, { passive: true })
+    return () => window.removeEventListener('scroll', updateScrollState)
+  }, [isHome])
+
   function closeMenus() {
     setMenuOpen(false)
     setProductsOpen(false)
   }
 
   return (
-    <header className="navbar">
+    <header className={`navbar${isHome ? ' navbar-home' : ''}${isHome && isScrolled ? ' is-scrolled' : ''}`}>
+      <svg
+        className="navbar-curve"
+        viewBox="0 0 440 78"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M 0 0 H 440 C 430 0 335 78 240 78 H 0 Z" />
+      </svg>
       <div className="navbar-inner">
         <NavLink className="brand" to="/" onClick={closeMenus}>
           <img className="brand-logo" src={logo} alt="R-Tech Solutions" />
@@ -135,7 +159,7 @@ function Navbar() {
             to="/request-a-quote"
             onClick={closeMenus}
           >
-            Get a Quote
+            Request a Quote
           </NavLink>
         </nav>
       </div>
