@@ -7,7 +7,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const serverDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-dotenv.config({ path: path.join(serverDir, '.env') })
+// Load server/.env WITHOUT overriding variables that are already set in the
+// environment (e.g. Render's SMTP_HOST / SMTP_PORT / SMTP_USER / SMTP_PASS /
+// NOTIFY_EMAIL / FRONTEND_URL / PORT). This prevents a local server/.env
+// (which may contain placeholder credentials) from clobbering the deployed
+// environment.
+dotenv.config({ path: path.join(serverDir, '.env'), override: false })
 
 if (!process.env.DATABASE_URL) {
   console.error(
