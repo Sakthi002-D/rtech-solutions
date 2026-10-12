@@ -6,11 +6,18 @@ import gasketsImage from "../assets/images/product-gasket.png";
 import industrialApplicationsImage from "../assets/images/industrial-appplication.png";
 import sheetsImage from "../assets/images/product-sheets.jpg";
 import customMouldedImage from "../assets/images/custom_moulded.png";
+import oRingsImage from "../assets/images/product-o-rings.jpg";
+import washersImage from "../assets/images/product-washers.jpg";
+import hosesImage from "../assets/images/product-hoses.jpg";
+import bushesImage from "../assets/images/product-bushes.jpg";
+import bellowsImage from "../assets/images/product-bellows.jpg";
 
 import gasketVideo from "../assets/images/product-gaskets.mp4.mp4";
 import oRingsVideo from "../assets/images/product-o-rings.mp4.mp4";
 import hosesVideo from "../assets/images/product-hoses.mp4.mp4";
 import bellowsVideo from "../assets/images/product-bellows.mp4.mp4";
+
+import { industries } from "../data/industries";
 
 import "./Home.css";
 
@@ -94,6 +101,45 @@ const capabilities = [
       "Product selection guided by the intended application and requirements.",
   },
 ];
+
+const homeProducts = [
+  { slug: "rubber-gaskets", name: "Rubber Gaskets", image: gasketsImage },
+  { slug: "o-rings", name: "O-Rings", image: oRingsImage },
+  { slug: "rubber-washers-seals", name: "Rubber Washers & Seals", image: washersImage },
+  { slug: "rubber-hoses", name: "Rubber Hoses", image: hosesImage },
+  { slug: "rubber-bushes", name: "Rubber Bushes", image: bushesImage },
+  { slug: "bellows", name: "Bellows", image: bellowsImage },
+  { slug: "rubber-sheets", name: "Rubber Sheets", image: sheetsImage },
+  {
+    slug: "custom-moulded-components",
+    name: "Custom-Moulded Rubber Components",
+    image: customMouldedImage,
+  },
+];
+
+// Optional per-industry photos: drop <slug>.jpg|jpeg|png|webp into
+// src/assets/images/industries/ (e.g. oil-and-gas.jpg) and they are picked up automatically.
+const industryPhotos = import.meta.glob(
+  "../assets/images/industries/*.{jpg,jpeg,png,webp}",
+  { eager: true, import: "default" }
+);
+
+// The existing plant photo is relevant to these three sectors only.
+const industryFallbacks = {
+  "oil-and-gas": { src: industrialApplicationsImage, position: "20% 50%" },
+  petrochemical: { src: industrialApplicationsImage, position: "55% 40%" },
+  power: { src: industrialApplicationsImage, position: "90% 30%" },
+};
+
+function getIndustryImage(slug) {
+  const match = Object.entries(industryPhotos).find(([path]) =>
+    path.replace(/^.*\//, "").replace(/\.[^.]+$/, "").replace(/^\d+-/, "") === slug
+  );
+
+  if (match) return { src: match[1], position: "center" };
+
+  return industryFallbacks[slug] || null;
+}
 
 function Home() {
   const [activeVideo, setActiveVideo] = useState(0);
@@ -204,6 +250,7 @@ function Home() {
                 className={index === activeVideo ? "active" : ""}
                 onClick={() => setActiveVideo(index)}
                 aria-label={`Show ${video.title}`}
+                aria-current={index === activeVideo ? "true" : undefined}
               />
             ))}
           </div>
@@ -213,7 +260,9 @@ function Home() {
         <div className="home-hero-footer">
           <span>R-TECH SOLUTIONS</span>
           <span>RUBBER &amp; POLYMER ENGINEERING</span>
-          <span>01 — 04</span>
+          <span>
+            0{activeVideo + 1} — 0{heroVideos.length}
+          </span>
         </div>
 
       </section>
@@ -276,7 +325,7 @@ function Home() {
             })}
           </div>
 
-          <Link to="/about" className="home-text-link">
+          <Link to="/about" className="home-text-link home-solid-cta">
             DISCOVER R-TECH
             <span>→</span>
           </Link>
@@ -349,6 +398,58 @@ function Home() {
 
 
       {/* =====================================================
+          PRODUCTS
+      ===================================================== */}
+
+      <section className="home-products" aria-labelledby="home-products-title">
+
+        <div className="home-products-header">
+          <div>
+            <p className="home-eyebrow">PRODUCT RANGE</p>
+
+            <h2 id="home-products-title">
+              Rubber &amp; Sealing
+              <span>Product Categories</span>
+            </h2>
+          </div>
+
+          <Link to="/products" className="home-text-link">
+            VIEW ALL PRODUCTS
+            <span>→</span>
+          </Link>
+        </div>
+
+        <ul className="home-products-grid">
+          {homeProducts.map((product, index) => (
+            <li key={product.slug}>
+              <Link
+                to={`/products/${product.slug}`}
+                className="home-product-card"
+              >
+                <span className="home-product-media">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                  />
+                </span>
+
+                <span className="home-product-info">
+                  <span className="home-product-number">
+                    0{index + 1}
+                  </span>
+                  <span className="home-product-name">{product.name}</span>
+                  <span className="home-product-arrow" aria-hidden="true">→</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+      </section>
+
+
+      {/* =====================================================
           MATERIALS
       ===================================================== */}
 
@@ -399,7 +500,7 @@ function Home() {
 
           </div>
 
-          <Link to="/materials" className="home-text-link">
+          <Link to="/materials" className="home-text-link home-solid-cta">
             EXPLORE MATERIALS
             <span>→</span>
           </Link>
@@ -434,20 +535,35 @@ function Home() {
 
           <ul className="home-custom-points">
             <li>
-              <span>01</span>
-              <strong>Precision components</strong>
+              <span className="home-custom-icon" aria-hidden="true">
+                <Settings />
+              </span>
+              <span className="home-custom-text">
+                <span className="home-custom-num">01</span>
+                <strong>Precision components</strong>
+              </span>
             </li>
             <li>
-              <span>02</span>
-              <strong>Reliable sealing performance</strong>
+              <span className="home-custom-icon" aria-hidden="true">
+                <ShieldCheck />
+              </span>
+              <span className="home-custom-text">
+                <span className="home-custom-num">02</span>
+                <strong>Reliable sealing performance</strong>
+              </span>
             </li>
             <li>
-              <span>03</span>
-              <strong>Application-specific requirements</strong>
+              <span className="home-custom-icon" aria-hidden="true">
+                <Layers3 />
+              </span>
+              <span className="home-custom-text">
+                <span className="home-custom-num">03</span>
+                <strong>Application-specific requirements</strong>
+              </span>
             </li>
           </ul>
 
-          <Link to="/products" className="home-text-link">
+          <Link to="/products" className="home-text-link home-custom-cta home-solid-cta">
             VIEW PRODUCTS
             <span>→</span>
           </Link>
@@ -468,6 +584,70 @@ function Home() {
           </figcaption>
 
         </figure>
+
+      </section>
+
+
+      {/* =====================================================
+          INDUSTRIES
+      ===================================================== */}
+
+      <section className="home-sectors" aria-labelledby="home-sectors-title">
+
+        <div className="home-sectors-header">
+          <div>
+            <p className="home-eyebrow">INDUSTRIES</p>
+
+            <h2 id="home-sectors-title">
+              Serving Critical
+              <span>Industrial Sectors</span>
+            </h2>
+          </div>
+
+          <Link to="/industries" className="home-text-link">
+            VIEW ALL INDUSTRIES
+            <span>→</span>
+          </Link>
+        </div>
+
+        <ul className="home-sectors-grid">
+          {industries.map((industry, index) => {
+            const image = getIndustryImage(industry.slug);
+
+            return (
+              <li
+                className={`home-sector ${image ? "has-image" : ""}`}
+                key={industry.slug}
+              >
+                {image && (
+                  <div className="home-sector-media">
+                    <img
+                      className="home-sector-image"
+                      src={image.src}
+                      alt=""
+                      loading="lazy"
+                      style={{ objectPosition: image.position }}
+                    />
+                  </div>
+                )}
+
+                <div className="home-sector-body">
+                  <span className="home-sector-number">
+                    0{index + 1}
+                  </span>
+
+                  <div className="home-sector-head">
+                    <h3>{industry.name}</h3>
+
+                    <span className="home-sector-arrow" aria-hidden="true">→</span>
+                  </div>
+
+                  <p>{industry.description}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
 
       </section>
 

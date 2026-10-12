@@ -1,0 +1,5 @@
+# SPA fallback for the React Router app served as a static site on Render.
+# Rewrites every non-/api GET request to /index.html so deep links (e.g.
+# /about, /products/1) load the app instead of a 404.
+/api    /api            200
+/*      /index.html     200

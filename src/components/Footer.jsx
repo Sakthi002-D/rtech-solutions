@@ -1,80 +1,131 @@
+
 import "./Footer.css";
 import rtechLogo from "../assets/images/rtech-logo.png";
+import { contact, hasEmail, hasPhone } from "../data/contact";
 
+const products = [
+  "Rubber Gaskets",
+  "O-Rings",
+  "Rubber Washers & Seals",
+  "Rubber Hoses",
+  "Rubber Bushes",
+  "Bellows",
+  "Rubber Sheets",
+  "Custom-Moulded Components",
+];
 
 function Footer() {
   return (
     <footer className="footer">
-
       <div className="footer-main">
+        <section className="footer-company">
+          <a href="/" className="footer-brand" aria-label="R-Tech Solutions home">
+            <img
+              src={rtechLogo}
+              alt="R-Tech Solutions"
+              className="footer-logo"
+            />
+          </a>
 
-        {/* COMPANY */}
-        <div className="footer-company">
-         <img
-            src={rtechLogo}
-            alt="R-Tech Solutions"
-            className="footer-logo"
-        />
-
-          <p>
+          <p className="footer-description">
             R-Tech Solutions provides high-quality rubber and sealing
             products for demanding industrial applications.
           </p>
-        </div>
 
+          <div className="footer-trust">
+            <div className="footer-trust-item">
+              <span className="footer-icon" aria-hidden="true">⚙</span>
+              <div>
+                <strong>Quality</strong>
+                <span>Reliable Performance</span>
+              </div>
+            </div>
 
-        {/* PRODUCTS */}
-        <div className="footer-column">
-          <h3>OUR PRODUCTS</h3>
+            <div className="footer-trust-item">
+              <span className="footer-icon" aria-hidden="true">▦</span>
+              <div>
+                <strong>Industrial</strong>
+                <span>Wide Range of Applications</span>
+              </div>
+            </div>
 
-          <a href="/products">Rubber Gaskets</a>
-          <a href="/products">O-Rings</a>
-          <a href="/products">Rubber Washers &amp; Seals</a>
-          <a href="/products">Rubber Hoses</a>
-          <a href="/products">Rubber Bushes</a>
-          <a href="/products">Bellows</a>
-          <a href="/products">Rubber Sheets</a>
-          <a href="/products">Custom-Moulded Components</a>
-        </div>
+            <div className="footer-trust-item">
+              <span className="footer-icon" aria-hidden="true">✓</span>
+              <div>
+                <strong>Trusted</strong>
+                <span>Customer Focused</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
+        <nav className="footer-column footer-products" aria-label="Our products">
+          <h3>Our Products</h3>
 
-        {/* CONTACT */}
-        <div className="footer-column footer-contact">
-          <h3>CONTACT US</h3>
+          {products.map((product) => (
+            <a href="/products" key={product}>
+              <span>{product}</span>
+              <span className="footer-arrow" aria-hidden="true">›</span>
+            </a>
+          ))}
+        </nav>
 
-          <p>
-            R-Tech Solutions
-          </p>
+        <section className="footer-column footer-contact" aria-label="Contact us">
+          <h3>Contact Us</h3>
 
-          <p>
-            Rubber &amp; Polymer Engineering
-          </p>
+          <div className="footer-contact-item">
+            <span className="footer-contact-icon" aria-hidden="true">⌖</span>
+            <div>
+              <strong>Address</strong>
+              {contact.addressLines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
+          </div>
 
-          <p>
-            Email: Contact details to be confirmed
-          </p>
+          {hasEmail && (
+            <div className="footer-contact-item">
+              <span className="footer-contact-icon" aria-hidden="true">✉</span>
+              <div>
+                <strong>Email</strong>
+                <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              </div>
+            </div>
+          )}
 
-          <p>
-            Phone: Contact details to be confirmed
-          </p>
-        </div>
+          {hasPhone && (
+            <div className="footer-contact-item">
+              <span className="footer-contact-icon" aria-hidden="true">☎</span>
+              <div>
+                <strong>Phone</strong>
+                <a href={`tel:${contact.phoneHref || contact.phone}`}>
+                  {contact.phone}
+                </a>
+              </div>
+            </div>
+          )}
 
+          <a className="footer-quote" href="/request-a-quote">
+            <span aria-hidden="true">➤</span>
+            <span>Request a Quote</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </section>
       </div>
 
-
-      {/* BOTTOM */}
       <div className="footer-bottom">
         <p>
-          © 2026 R-Tech Solutions. All Rights Reserved.
+          © {new Date().getFullYear()} R-Tech Solutions. All Rights Reserved.
         </p>
 
-        <div className="footer-links">
+        <nav className="footer-bottom-links" aria-label="Footer navigation">
+          <a href="/">Home</a>
           <a href="/about">About Us</a>
+          <a href="/products">Products</a>
+          <a href="/manufacturing">Manufacturing</a>
           <a href="/contact">Contact</a>
-          <a href="/request-a-quote">Request a Quote</a>
-        </div>
+        </nav>
       </div>
-
     </footer>
   );
 }

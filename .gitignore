@@ -2,6 +2,14 @@
 logs
 *.log
 npm-debug.log*
+.env
+.env.*
+!.env.example
+
+# Server-specific secrets - never commit (server/.env is already git-ignored
+# via server/.gitignore, but this makes the root ignore explicit)
+server/.env
+server/.env.*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
@@ -11,6 +19,11 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Environment secrets - never commit
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*

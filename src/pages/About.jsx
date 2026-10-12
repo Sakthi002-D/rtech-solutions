@@ -1,362 +1,213 @@
+import {
+  BadgeCheck,
+  ChevronRight,
+  Lightbulb,
+  ShieldCheck,
+  Target,
+  Users,
+  Wrench,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { industries } from "../data/industries";
+import { products } from "../data/products";
+import gasketsImage from "../assets/images/product-gasket.png";
+import customMouldedImage from "../assets/images/custom_moulded.png";
+import plantImage from "../assets/images/rtech-building.png";
+import oilGasImage from "../assets/images/industries/01-oil-and-gas.jpg";
+import petrochemicalImage from "../assets/images/industries/02-petrochemical.jpg";
+import powerImage from "../assets/images/industries/03-power.jpg";
+import automotiveImage from "../assets/images/industries/04-automotive.jpg";
+import constructionImage from "../assets/images/industries/05-construction.jpg";
+import waterImage from "../assets/images/industries/06-water-treatment.jpg";
+import pharmaImage from "../assets/images/industries/07-pharmaceutical.jpg";
+import foodImage from "../assets/images/industries/08-food-processing.jpg";
 import "./About.css";
-import logo from "../assets/images/rtech-logo.png";
+
+const industryImages = {
+  "oil-and-gas": oilGasImage,
+  petrochemical: petrochemicalImage,
+  power: powerImage,
+  automotive: automotiveImage,
+  construction: constructionImage,
+  "water-treatment": waterImage,
+  pharmaceutical: pharmaImage,
+  "food-processing": foodImage,
+};
+
+const heroFeatures = [
+  { title: "Precision Components", icon: Target },
+  { title: "Durable & Reliable", icon: ShieldCheck },
+  { title: "Custom Engineering", icon: Wrench },
+];
+
+const values = [
+  {
+    title: "Quality First",
+    icon: BadgeCheck,
+    description:
+      "A quality-first approach to rubber and sealing products for industrial requirements.",
+  },
+  {
+    title: "Customer Focus",
+    icon: Users,
+    description:
+      "Product and material choices considered around each customer's application.",
+  },
+  {
+    title: "Innovation",
+    icon: Lightbulb,
+    description:
+      "Engineering solutions that respond to evolving industrial needs.",
+  },
+];
 
 function About() {
   return (
-    <main className="about-page">
-
-      {/* =========================
-          HERO
-      ========================= */}
-
-      <section className="about-hero">
-        <div className="about-container about-hero-inner">
-
-          <div className="about-hero-content">
-            <p className="about-label">ABOUT R-TECH</p>
-
-            <h1>
-              Rubber &amp; Polymer
-              <br />
-              Engineering
-              <br />
-              Solutions.
-            </h1>
-
-            <p className="about-hero-text">
-              R-Tech Solutions is a trusted name in rubber and polymer
-              engineering, specializing in high-quality sealing and
-              industrial rubber products.
-            </p>
+    <main className="ab2-page">
+      <section className="ab2-hero" aria-labelledby="ab2-hero-title">
+        <div className="ab2-hero-copy">
+          <p className="ab2-eyebrow">About Us</p>
+          <h1 id="ab2-hero-title">
+            Engineering
+            <br />
+            Reliable Rubber
+            <br />
+            <span>Solutions</span>
+          </h1>
+          <p className="ab2-lede">
+            R-Tech Solutions specializes in rubber and polymer engineering,
+            supplying rubber and sealing products for demanding industrial
+            applications.
+          </p>
+          <div className="ab2-actions">
+            <Link className="ab2-btn ab2-btn-red" to="/products">
+              Our Products
+            </Link>
+            <Link className="ab2-btn ab2-btn-outline" to="/contact">
+              Contact Us
+            </Link>
           </div>
-
-          <div className="about-hero-visual">
-            <div className="about-grid"></div>
-
-            <div className="about-circle about-circle-one"></div>
-            <div className="about-circle about-circle-two"></div>
-
-            <img
-              src={logo}
-              alt="R-Tech Solutions"
-              className="about-logo"
-            />
-
-            <span className="about-visual-number">
-              01 / ABOUT
-            </span>
-          </div>
-
+        </div>
+        <div className="ab2-hero-media">
+          <img
+            src={gasketsImage}
+            alt="Industrial rubber gaskets and sealing components"
+            fetchPriority="high"
+          />
+          <ul className="ab2-strip">
+            {heroFeatures.map(({ title, icon: Icon }) => (
+              <li key={title}>
+                <Icon aria-hidden="true" />
+                <strong>{title}</strong>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-
-      {/* =========================
-          WHO WE ARE
-      ========================= */}
-
-      <section className="about-introduction">
-        <div className="about-container">
-
-          <div className="about-section-number">
-            WHO WE ARE
-          </div>
-
-          <div className="about-introduction-content">
-
-            <div className="about-heading">
-              <p className="about-label">
-                R-TECH SOLUTIONS
-              </p>
-
-              <h2>
-                Engineering rubber solutions
-                <span> for demanding applications.</span>
-              </h2>
-            </div>
-
-            <div className="about-description">
-              <p>
-                R-Tech Solutions specializes in manufacturing and
-                supplying a wide range of high-quality sealing and
-                industrial rubber products including gaskets, O-rings,
-                washers, hoses, rubber sheets, bushes, bellows, and
-                custom-moulded components.
-              </p>
-
-              <p>
-                With technical expertise, we focus on delivering
-                durable, reliable, and innovative solutions for
-                demanding industrial requirements.
-              </p>
-            </div>
-
-          </div>
-
+      <section className="ab2-who" aria-labelledby="ab2-who-title">
+        <figure className="ab2-who-image">
+          <img
+            src={plantImage}
+            alt="R-Tech Solutions building"
+            loading="lazy"
+          />
+        </figure>
+        <div className="ab2-who-copy">
+          <p className="ab2-eyebrow">Who We Are</p>
+          <h2 id="ab2-who-title">About R-Tech Solutions</h2>
+          <p>
+            R-Tech Solutions specializes in rubber and polymer engineering,
+            supplying rubber and sealing products for demanding industrial
+            applications.
+          </p>
+          <p>
+            The range covers sealing products, fluid transfer, vibration
+            control, sheet materials and custom-moulded components, available
+            across a variety of rubber and polymer materials.
+          </p>
+          <ul className="ab2-product-list">
+            {products.map((product) => (
+              <li key={product.slug}>
+                <Link to={`/products/${product.slug}`}>
+                  <ShieldCheck aria-hidden="true" />
+                  <span>{product.name}</span>
+                  <ChevronRight aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
+      <section className="ab2-values" aria-labelledby="ab2-values-title">
+        <div className="ab2-values-inner">
+          <div className="ab2-values-head">
+            <p className="ab2-eyebrow">Our Values</p>
+            <h2 id="ab2-values-title">What Drives Us</h2>
+          </div>
+          <div className="ab2-values-grid">
+            {values.map(({ title, description, icon: Icon }) => (
+              <article className="ab2-value-card" key={title}>
+                <span className="ab2-value-icon">
+                  <Icon aria-hidden="true" />
+                </span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* =========================
-          CAPABILITY
-      ========================= */}
-
-      <section className="about-capability">
-
-        <div className="about-container">
-
-          <div className="about-capability-heading">
-            <p className="about-label">
-              OUR CAPABILITY
-            </p>
-
-            <h2>
-              The right rubber solution
-              <br />
-              for every application.
+      <section className="ab2-industries" aria-labelledby="ab2-ind-title">
+        <div className="ab2-industries-inner">
+          <div className="ab2-ind-copy">
+            <p className="ab2-eyebrow">Industries We Serve</p>
+            <h2 id="ab2-ind-title">
+              Solutions for <span>Diverse Industries</span>
             </h2>
-          </div>
-
-          <div className="about-capability-grid">
-
-            <div className="about-capability-item">
-              <span>01</span>
-
-              <div>
-                <h3>
-                  Rubber &amp; Polymer Engineering
-                </h3>
-
-                <p>
-                  Products are designed using a variety of polymers
-                  to provide the right material for different
-                  application requirements.
-                </p>
-              </div>
-            </div>
-
-
-            <div className="about-capability-item">
-              <span>02</span>
-
-              <div>
-                <h3>
-                  Sealing Solutions
-                </h3>
-
-                <p>
-                  A wide range of sealing and industrial rubber
-                  products designed for demanding environments
-                  and long-term performance.
-                </p>
-              </div>
-            </div>
-
-
-            <div className="about-capability-item">
-              <span>03</span>
-
-              <div>
-                <h3>
-                  Custom-Moulded Components
-                </h3>
-
-                <p>
-                  Custom-moulded rubber components are available
-                  for specific customer and application
-                  requirements.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================
-          VALUES
-      ========================= */}
-
-      <section className="about-values">
-
-        <div className="about-container">
-
-          <div className="about-values-heading">
-
-            <div>
-              <div className="about-section-number">
-                OUR VALUES
-              </div>
-            </div>
-
-            <h2>
-              What we believe in.
-            </h2>
-
-          </div>
-
-
-          <div className="about-values-list">
-
-            <div className="about-value">
-              <span>01</span>
-
-              <div>
-                <h3>
-                  Quality First
-                </h3>
-
-                <p>
-                  Every product goes through rigorous checks for
-                  performance and safety.
-                </p>
-              </div>
-            </div>
-
-
-            <div className="about-value">
-              <span>02</span>
-
-              <div>
-                <h3>
-                  Customer Focus
-                </h3>
-
-                <p>
-                  Tailor-made solutions with fast delivery and
-                  technical support.
-                </p>
-              </div>
-            </div>
-
-
-            <div className="about-value">
-              <span>03</span>
-
-              <div>
-                <h3>
-                  Innovation
-                </h3>
-
-                <p>
-                  Continuous improvement to meet evolving
-                  industry challenges.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =========================
-          VISION
-      ========================= */}
-
-      <section className="about-vision">
-
-        <div className="about-container about-vision-inner">
-
-          <div className="about-vision-number">
-            03 / OUR VISION
-          </div>
-
-
-          <div className="about-vision-content">
-
-            <p className="about-label">
-              OUR VISION
+            <p>
+              Rubber and sealing products for a range of industrial
+              applications.
             </p>
+          </div>
+          <ul className="ab2-ind-row">
+            {industries.map((industry) => (
+              <li key={industry.slug}>
+                <Link className="ab2-ind-card" to="/industries">
+                  <img
+                    src={industryImages[industry.slug]}
+                    alt=""
+                    loading="lazy"
+                  />
+                  <strong>{industry.name}</strong>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-            <h2>
-              Engineering a more reliable industrial future.
+      <section className="ab2-cta" aria-labelledby="ab2-cta-title">
+        <img src={customMouldedImage} alt="" loading="lazy" />
+        <div className="ab2-cta-inner">
+          <div>
+            <h2 id="ab2-cta-title">
+              Let&apos;s Build a Stronger, More Reliable Future Together
             </h2>
-
-            <p className="about-vision-description">
-              To be recognized as a global leader in rubber and
-              sealing solutions by combining technical precision,
-              dependable quality, and long-term partnerships.
+            <p>
+              Talk to us about customised rubber and polymer solutions for your
+              application.
             </p>
-
-
-            <div className="about-vision-points">
-              <span>01 / PRECISION</span>
-              <span>02 / RELIABILITY</span>
-              <span>03 / PARTNERSHIP</span>
-            </div>
-
           </div>
-
-
-          <div
-            className="about-vision-visual"
-            aria-hidden="true"
-          >
-
-            <div className="about-vision-orbit about-vision-orbit-one"></div>
-
-            <div className="about-vision-orbit about-vision-orbit-two"></div>
-
-            <div className="about-vision-core">
-              R
-            </div>
-
-            <span className="about-vision-tag">
-              BUILT TO LAST
-            </span>
-
-          </div>
-
+          <Link className="ab2-btn ab2-btn-white" to="/request-a-quote">
+            Request a Quote
+          </Link>
         </div>
-
       </section>
-
-
-      {/* =========================
-          CTA
-      ========================= */}
-
-      <section className="about-cta-section">
-
-        <div className="about-container">
-
-          <div className="about-cta">
-
-            <div className="about-cta-content">
-
-              <p className="about-label">
-                LET&apos;S WORK TOGETHER
-              </p>
-
-              <h2>
-                Looking for the right
-                <br />
-                rubber solution?
-              </h2>
-
-            </div>
-
-
-            <a
-              href="/request-a-quote"
-              className="about-cta-button"
-            >
-              REQUEST A QUOTE
-              <span>-&gt;</span>
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
-
     </main>
   );
 }

@@ -8,7 +8,7 @@ const links = [
   { label: 'About Us', to: '/about' },
   { label: 'Materials', to: '/materials' },
   { label: 'Industries', to: '/industries' },
-  { label: 'Technical Information', to: '/technical-information' },
+  { label: 'Manufacturing', to: '/manufacturing' },
   { label: 'Contact', to: '/contact' },
 ]
 
@@ -63,11 +63,32 @@ function Navbar() {
     <header className={`navbar${isHome ? ' navbar-home' : ''}${isHome && isScrolled ? ' is-scrolled' : ''}`}>
       <svg
         className="navbar-curve"
-        viewBox="0 0 440 78"
+        viewBox="0 0 470 82"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <path d="M 0 0 H 440 C 430 0 335 78 240 78 H 0 Z" />
+        <defs>
+          <linearGradient
+            id="navbar-curve-line"
+            gradientUnits="userSpaceOnUse"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="82"
+          >
+            <stop offset="0%" stopColor="#ff2a4a" />
+            <stop offset="65%" stopColor="#e31837" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#e31837" stopOpacity="0.15" />
+          </linearGradient>
+        </defs>
+        <path
+          className="navbar-logo-panel"
+          d="M 0 0 H 430 C 396 0 376 16 354 40 C 334 62 314 82 270 82 H 0 Z"
+        />
+        <path
+          className="navbar-curve-accent"
+          d="M 430 0 C 396 0 376 16 354 40 C 334 62 314 82 270 82"
+        />
       </svg>
       <div className="navbar-inner">
         <NavLink className="brand" to="/" onClick={closeMenus}>

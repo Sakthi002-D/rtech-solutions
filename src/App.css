@@ -189,8 +189,8 @@
 }
 
 .quote-button:hover {
-  border-color: #6f0d22;
-  background: #6f0d22;
+  border-color: #820a23;
+  background: #820a23;
 }
 
 .menu-toggle {
@@ -313,7 +313,7 @@
 }
 
 .home-hero-primary:hover {
-  background: #6f0d22;
+  background: #820a23;
   transform: translateY(-2px);
 }
 
@@ -561,7 +561,7 @@
 }
 
 .text-link:hover {
-  color: #6f0d22;
+  color: #820a23;
 }
 
 .section-heading-row {
@@ -690,7 +690,7 @@
 }
 
 .home-cta-button:hover {
-  background: #6f0d22;
+  background: #820a23;
 }
 
 .page-header {
@@ -1209,7 +1209,7 @@
 .about-cta h2 { max-width: 650px; margin: 0; color: var(--ink); font-size: clamp(2.2rem, 4vw, 4rem); letter-spacing: -0.055em; line-height: 1; }
 .about-cta p:last-child { margin: 22px 0 0; color: var(--muted); font-size: 1rem; }
 .about-cta a { display: inline-flex; flex-shrink: 0; gap: 20px; align-items: center; padding: 17px 22px; background: var(--brand-maroon); color: #ffffff; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; transition: background 180ms ease, transform 180ms ease; }
-.about-cta a:hover { background: #6f0d22; transform: translateY(-3px); }
+.about-cta a:hover { background: #820a23; transform: translateY(-3px); }
 
 .about-page .about-hero-copy h1,
 .about-page .about-section-copy h2,
@@ -1303,7 +1303,7 @@
 
 .product-card-link:hover,
 .primary-link:hover {
-  background: #6f0d22;
+  background: #820a23;
 }
 
 .product-details-page {
