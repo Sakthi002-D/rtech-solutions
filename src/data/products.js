@@ -5,6 +5,38 @@ export const products = [
     category: 'Sealing products',
     shortDescription:
       'Gaskets for industrial sealing, flange joints, and equipment connections where pressure containment and leak prevention are required.',
+    overview:
+      'Rubber gaskets seal the space between two mating surfaces to prevent the leakage of fluids or gases under compression. R-Tech Solutions supplies gaskets for flange joints, pipe connections, and equipment enclosures in a range of compounds and profiles, selected to suit the operating media, pressure, and temperature of the joint.',
+    keyFeatures: [
+      'Reliable sealing between mating flanged surfaces under compression',
+      'Available as full-face, ring, and profiled gaskets',
+      'Cut or moulded to customer drawings and samples',
+      'Wide choice of elastomer compounds for different media',
+      'Suitable for a broad range of industrial pressures and temperatures',
+    ],
+    materials: ['Nitrile Rubber (NBR)', 'EPDM', 'Neoprene (CR)', 'Silicone', 'Viton (FKM)', 'PTFE'],
+    sizes: [
+      'Inner diameter (ID) to customer specification',
+      'Outer diameter (OD) to customer specification',
+      'Thickness selected to suit the joint',
+      'Bolt-hole pattern (PCD) and hole size and quantity',
+      'Supplied to drawings, samples, or standard sizes',
+    ],
+    applications: [
+      'Pipe and flange connections',
+      'Pumps and valves',
+      'Water and wastewater systems',
+      'Chemical and process plant',
+      'HVAC and ducting',
+      'General industrial enclosures',
+    ],
+    customization: [
+      'Custom ID, OD, and thickness',
+      'Bolt-hole patterns and quantities',
+      'Material and hardness selection',
+      'Precision cutting or moulded profiles',
+      'Prototype through to production quantities',
+    ],
     types: [
       'Full Face Gasket',
       'Ring Gasket',
@@ -28,6 +60,37 @@ export const products = [
     category: 'Sealing products',
     shortDescription:
       'O-rings supplied in standard and custom sizes for sealing, retention, and pressure-sensitive industrial applications.',
+    overview:
+      'O-rings are circular elastomer seals seated in a groove to prevent the leakage of liquids or gases in both static and dynamic applications. R-Tech Solutions supplies O-rings in standard international sizes as well as custom dimensions, in a range of compounds selected to match the media, pressure, and temperature of the assembly.',
+    keyFeatures: [
+      'Effective sealing in static and dynamic (reciprocating and rotary) joints',
+      'Available in standard sizes (AS568, ISO 3601, BS) and custom made',
+      'Broad compound selection for oil, water, chemical, and high-temperature service',
+      'Compact and economical to install and replace',
+      'Suitable for high-pressure sealing arrangements',
+    ],
+    materials: ['Nitrile Rubber (NBR)', 'EPDM', 'Silicone', 'Viton (FKM)', 'Neoprene (CR)', 'PTFE'],
+    sizes: [
+      'O-ring ID, OD, and cross-section (CS)',
+      'AS568, ISO 3601, and BS standard sizes',
+      'Custom sizes made to specification',
+      'Measurement guidance available for unknown sizes',
+    ],
+    applications: [
+      'Hydraulic and pneumatic cylinders',
+      'Pumps and valves',
+      'Pipe couplings and fittings',
+      'Compressors',
+      'Automotive and off-highway systems',
+      'General fluid transfer assemblies',
+    ],
+    customization: [
+      'Custom ID, OD, and cross-section',
+      'Material and hardness selection',
+      'Colour options',
+      'Food-grade and specialty compounds',
+      'Bulk, kit, or assembled supply',
+    ],
     types: ['AS568', 'ISO 3601', 'BS Sizes', 'Custom Made'],
     technicalInfo: [
       'O-ring ID',
@@ -43,13 +106,38 @@ export const products = [
     category: 'Sealing products',
     shortDescription:
       'Washers and sealing elements used for leak prevention, cushioning, and controlled compression in assembly work.',
-    types: ['Flat', 'Bonded', 'Sealing Washers'],
-    technicalInfo: [
-      'Gasket ID',
-      'Gasket OD',
-      'Thickness',
-      'Hole size and quantity',
+    overview:
+      'Rubber washers and seals provide leak prevention, vibration isolation, and controlled compression in bolted and mechanical assemblies. R-Tech Solutions supplies flat, bonded, and sealing washers in standard and custom dimensions for general industrial and assembly applications.',
+    keyFeatures: [
+      'Prevent leakage around bolts, fixings, and joints',
+      'Provide cushioning and controlled compression',
+      'Available as flat, bonded, and sealing washers',
+      'Die-cut or moulded to size',
+      'Wide compound choice for different environments',
     ],
+    materials: ['Nitrile Rubber (NBR)', 'EPDM', 'Neoprene (CR)', 'Silicone', 'Natural Rubber (NR)'],
+    sizes: [
+      'Washer ID, OD, and thickness',
+      'Hole size and quantity',
+      'Flat, bonded, or sealing profiles',
+      'Made to drawing or sample',
+    ],
+    applications: [
+      'Bolted flange and panel joints',
+      'Plumbing and pipework',
+      'Electrical enclosures',
+      'Automotive assemblies',
+      'General sealing and cushioning',
+    ],
+    customization: [
+      'Custom ID, OD, and thickness',
+      'Hole size and quantity',
+      'Material and hardness selection',
+      'Bonded (rubber-to-metal) options',
+      'Standard or made-to-order quantities',
+    ],
+    types: ['Flat', 'Bonded', 'Sealing Washers'],
+    technicalInfo: ['Gasket ID', 'Gasket OD', 'Thickness', 'Hole size and quantity'],
   },
   {
     slug: 'rubber-hoses',
@@ -57,6 +145,37 @@ export const products = [
     category: 'Fluid transfer',
     shortDescription:
       'Flexible rubber hose solutions for air, water, fuel, hydraulic, chemical, and food-related transfer requirements.',
+    overview:
+      'Rubber hoses provide a flexible connection for transferring air, water, fuel, hydraulic fluid, chemicals, and food-related media. R-Tech Solutions supplies reinforced rubber hoses selected to suit the medium, working pressure, and temperature of the application, with guidance on the correct compound and reinforcement.',
+    keyFeatures: [
+      'Flexible transfer of air, water, fuel, hydraulic, and chemical media',
+      'Reinforced constructions for working-pressure service',
+      'Material selection matched to the conveyed medium',
+      'Available in standard lengths and cut-to-length',
+      'Guidance on temperature range and media compatibility',
+    ],
+    materials: ['Nitrile Rubber (NBR)', 'EPDM', 'Neoprene (CR)', 'Silicone', 'Natural Rubber (NR)'],
+    sizes: [
+      'Inside diameter and length to requirement',
+      'Reinforcement and construction to suit working pressure',
+      'Standard lengths and cut-to-length supply',
+      'Material chosen to match the conveyed medium',
+    ],
+    applications: [
+      'Compressed air and water lines',
+      'Hydraulic systems',
+      'Fuel transfer',
+      'Chemical dosing and transfer',
+      'Food and beverage transfer',
+      'General industrial fluid handling',
+    ],
+    customization: [
+      'Length and inside diameter to requirement',
+      'Material matched to the conveyed medium',
+      'Reinforcement to suit working pressure',
+      'Guidance on connections and end fittings',
+      'Standard or project quantities',
+    ],
     types: [
       'Air & Water Hose',
       'Hydraulic Hose',
@@ -76,10 +195,39 @@ export const products = [
     category: 'Vibration control',
     shortDescription:
       'Rubber bushes for isolation, cushioning, and controlled movement in industrial and mechanical assemblies.',
-    types: ['Cylindrical', 'Flanged', 'Spherical', 'custom_moulded'],
+    overview:
+      'Rubber bushes isolate, cushion, and accommodate controlled movement between parts in mechanical and automotive assemblies. R-Tech Solutions supplies cylindrical, flanged, and spherical bushes in a range of compounds and hardnesses to deliver the required load support and vibration damping.',
+    keyFeatures: [
+      'Isolate vibration and reduce noise transmission',
+      'Accommodate controlled movement between mating parts',
+      'Available as cylindrical, flanged, and spherical bushes',
+      'Compounded and moulded to the required hardness',
+      'Custom moulded to application dimensions',
+    ],
+    materials: ['Natural Rubber (NR)', 'Nitrile Rubber (NBR)', 'EPDM', 'Neoprene (CR)'],
+    sizes: [
+      'Application-based dimensions',
+      'Custom moulded requirements',
+      'Hardness selected for load and damping',
+    ],
+    applications: [
+      'Suspension and linkage systems',
+      'Engine and gearbox mounts',
+      'Industrial machinery mounts',
+      'Pivot and articulation points',
+      'General vibration isolation',
+    ],
+    customization: [
+      'Dimensions to application',
+      'Hardness selection for load support and damping',
+      'Cylindrical, flanged, or spherical profile',
+      'Custom moulded requirements',
+      'Prototype through to production',
+    ],
+    types: ['Cylindrical', 'Flanged', 'Spherical', 'Custom Moulded'],
     technicalInfo: [
       'Application-based dimensions',
-      'custom_moulded requirements',
+      'Custom moulded requirements',
       'Material selection guidance',
     ],
   },
@@ -89,6 +237,36 @@ export const products = [
     category: 'Expansion products',
     shortDescription:
       'Flexible bellows used to accommodate movement, expansion, and connection requirements in industrial assemblies.',
+    overview:
+      'Rubber bellows are flexible, convoluted components that accommodate movement, expansion, and vibration while protecting internal mechanisms from dust and moisture. R-Tech Solutions supplies round, oval, and blind bellows in a range of compounds, with custom designs to suit the application.',
+    keyFeatures: [
+      'Accommodate axial and angular movement and expansion',
+      'Protect mechanisms from dust, dirt, and moisture',
+      'Available as round, oval, and blind bellows',
+      'Custom convolutions and lengths to suit travel',
+      'Moulded in a range of elastomer compounds',
+    ],
+    materials: ['EPDM', 'Neoprene (CR)', 'Nitrile Rubber (NBR)', 'Silicone'],
+    sizes: [
+      'Shape, size, and length to application',
+      'Convolution design for the required travel',
+      'Material selected for the service environment',
+      'Custom bellows from drawings or samples',
+    ],
+    applications: [
+      'Steering and suspension systems',
+      'Expansion and vibration joints',
+      'Protective covers and gaiters',
+      'Ducting and connection points',
+      'General industrial movement accommodation',
+    ],
+    customization: [
+      'Shape (round, oval, blind)',
+      'Size and length to application',
+      'Convolution design for required travel',
+      'Material selection',
+      'Custom bellows from drawings or samples',
+    ],
     types: ['Round', 'Oval', 'Blind', 'Custom'],
     technicalInfo: [
       'Dimensional requirements',
@@ -102,6 +280,37 @@ export const products = [
     category: 'Sheet materials',
     shortDescription:
       'Industrial rubber sheets supplied in multiple compounds and thicknesses for gaskets, linings, pads, and custom fabricated parts.',
+    overview:
+      'Industrial rubber sheets are supplied in multiple compounds and thicknesses for gasket cutting, lining, pads, and fabricated parts. R-Tech Solutions offers rubber sheeting in a range of materials and finishes to suit sealing, cushioning, anti-slip, and environmental service conditions.',
+    keyFeatures: [
+      'Wide range of compounds and thicknesses',
+      'Suitable for gaskets, linings, pads, and fabricated parts',
+      'Multiple finish options, including cloth and plate finishes',
+      'Cut to size and custom fabrication available',
+      'Specialty grades including insertion and conductive/antistatic',
+    ],
+    materials: ['Natural Rubber (NR)', 'Nitrile Rubber (NBR)', 'EPDM', 'Neoprene (CR)', 'Silicone', 'Viton (FKM)'],
+    sizes: [
+      'Rubber sheet thickness: 0.5 mm to 50 mm',
+      'Rubber sheet hardness: 40 to 90 Shore A',
+      'Standard sheet sizes and cut-to-size supply',
+      'Finish options as required',
+    ],
+    applications: [
+      'Gasket cutting and sealing',
+      'Tank and vessel lining',
+      'Flooring and anti-slip mats',
+      'Vibration pads and spacers',
+      'Electrical and antistatic applications',
+      'General fabrication',
+    ],
+    customization: [
+      'Thickness from 0.5 mm to 50 mm',
+      'Hardness selection',
+      'Finish options',
+      'Cut-to-size and die-cut shapes',
+      'Insertion and conductive/antistatic grades',
+    ],
     types: [
       'Natural Rubber Sheet (NR)',
       'Nitrile Rubber Sheet (NBR)',
@@ -125,7 +334,46 @@ export const products = [
     category: 'Custom manufacturing',
     shortDescription:
       'Tailor-made rubber parts produced to meet application-specific dimensions, materials, and performance requirements.',
-    types: ['custom_moulded', 'Application Specific', 'Prototype to Production'],
+    overview:
+      'Custom-moulded rubber components are produced to meet application-specific dimensions, materials, and performance requirements. From prototype through to production, R-Tech Solutions develops rubber parts tailored to the sealing, cushioning, and structural needs of each application.',
+    keyFeatures: [
+      'Made to your drawings, samples, and performance requirements',
+      'Prototype through to production supply',
+      'Tailored material and hardness selection',
+      'Complex geometries and multi-material designs',
+      'Application-specific sealing and fabrication guidance',
+    ],
+    materials: [
+      'Natural Rubber (NR)',
+      'Nitrile Rubber (NBR)',
+      'EPDM',
+      'Neoprene (CR)',
+      'Silicone',
+      'Viton (FKM)',
+      'Polyurethane',
+      'PTFE',
+    ],
+    sizes: [
+      'Part dimensions to drawing or sample',
+      'Material specification and hardness',
+      'Prototype through to production quantities',
+      'Application-specific design guidance',
+    ],
+    applications: [
+      'Bespoke sealing and mounting components',
+      'OEM equipment parts',
+      'Automotive and industrial assemblies',
+      'Specialist cushioning and damping parts',
+      'Replacement and obsolete parts',
+    ],
+    customization: [
+      'Part drawings and dimensions',
+      'Material specification and hardness',
+      'Prototype to production quantities',
+      'Custom sealing and fabrication',
+      'Application-specific design guidance',
+    ],
+    types: ['Custom Moulded', 'Application Specific', 'Prototype to Production'],
     technicalInfo: [
       'Part drawings and dimensions',
       'Material specification',
