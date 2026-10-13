@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import logo from '../assets/images/rtech-logo.png'
 import './Navbar.css'
@@ -29,6 +29,17 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
+  const productsNavRef = useRef(null)
+  const [prevPathname, setPrevPathname] = useState(location.pathname)
+
+  // Close the Products dropdown whenever the route changes so it can never
+  // remain open after navigating to a product or another page (this also
+  // covers browser back/forward). Adjusting state during render is the
+  // React-recommended pattern for reacting to a changing value.
+  if (location.pathname !== prevPathname) {
+    setPrevPathname(location.pathname)
+    setProductsOpen(false)
+  }
 
   useEffect(() => {
     function closeWithEscape(event) {
@@ -41,6 +52,29 @@ function Navbar() {
     document.addEventListener('keydown', closeWithEscape)
     return () => document.removeEventListener('keydown', closeWithEscape)
   }, [])
+
+  // Close the Products dropdown when the user clicks or taps anywhere outside
+  // of it (works on both desktop and mobile). Using both mousedown and
+  // touchstart covers mouse and touch interactions reliably.
+  useEffect(() => {
+    if (!productsOpen) return undefined
+
+    function handlePointerOutside(event) {
+      if (
+        productsNavRef.current &&
+        !productsNavRef.current.contains(event.target)
+      ) {
+        setProductsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerOutside)
+    document.addEventListener('touchstart', handlePointerOutside)
+    return () => {
+      document.removeEventListener('mousedown', handlePointerOutside)
+      document.removeEventListener('touchstart', handlePointerOutside)
+    }
+  }, [productsOpen])
 
   useEffect(() => {
     if (!isHome) return undefined
@@ -126,7 +160,7 @@ function Navbar() {
               </NavLink>
             ))}
 
-            <div className="products-navigation">
+            <div className="products-navigation" ref={productsNavRef}>
               <div className="products-trigger">
                 <NavLink
                   className={({ isActive }) => (isActive ? 'active' : '')}
