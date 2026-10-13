@@ -1,12 +1,4 @@
-import { useEffect, useRef } from 'react'
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
@@ -17,58 +9,41 @@ import Industries from './pages/Industries.jsx'
 import Manufacturing from './pages/Manufacturing.jsx'
 import Contact from './pages/Contact.jsx'
 import RequestQuote from './pages/RequestQuote.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx';
+import Navbar from './components/Navbar.jsx';
+
 import './App.css'
-
-// True only when the current document was loaded by a hard browser refresh
-// (F5, Ctrl+R or the refresh button). A first visit reports "navigate" and
-// history traversal reports "back_forward", so ordinary link clicks never
-// look like a refresh.
-function isBrowserRefresh() {
-  if (typeof performance === 'undefined') return false
-  if (typeof performance.getEntriesByType === 'function') {
-    const entry = performance.getEntriesByType('navigation')[0]
-    if (entry) return entry.type === 'reload'
-  }
-  return performance.navigation?.type === 1
-}
-
-// Sends the visitor back to Home whenever the current document was opened by
-// a browser refresh, then scrolls Home to the very top. The refresh check runs
-// once per document and redirects at most one time (replace, client-side), so
-// normal navigation, product detail routes, back/forward history and the
-// navbar/footer keep working without loops or full-page reloads.
+// Detects a hard browser refresh (F5 / Ctrl+R / browser refresh button) and
+// redirects to the Home page. A client-side navigation (link click or
+// useNavigate) never reports "reload", so this only fires on true page
+// refreshes and never interferes with normal navigation or history
+// traversal. The redirect uses window.location.replace to avoid stacking
+// duplicate history entries.
 function RefreshRedirect() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const isRefresh = useRef(null)
-  const hasRedirected = useRef(false)
+  const isReload = typeof window !== 'undefined' &&
+    typeof performance !== 'undefined' &&
+    typeof performance.getEntriesByType === 'function' &&
+    performance.getEntriesByType('navigation')[0]?.type === 'reload'
 
-  if (isRefresh.current === null) {
-    isRefresh.current = isBrowserRefresh()
+  if (isReload) {
+    window.location.replace('/')
+    return null
   }
-
-  useEffect(() => {
-    if (!isRefresh.current) return
-
-    if (location.pathname !== '/') {
-      if (!hasRedirected.current) {
-        hasRedirected.current = true
-        navigate('/', { replace: true })
-      }
-      return
-    }
-
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [location.pathname, navigate])
 
   return null
 }
 
+
 function App() {
+
+
+
   return (
     <BrowserRouter>
       <div className="site-shell">
+        <ScrollToTop />
         <RefreshRedirect />
+
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
