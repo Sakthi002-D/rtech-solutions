@@ -147,7 +147,7 @@
 
 .navbar.navbar .products-menu,
 .navbar.navbar.navbar-home .products-menu {
-  top: calc(100% + 14px);
+  top: calc(100% + 12px);
   border-color: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   background: #151719;
@@ -258,6 +258,41 @@
   .navbar.navbar.navbar-home .quote-button {
     align-self: stretch;
     text-align: center;
+  }
+}
+
+/* Desktop only: stretch the Products wrapper so the dropdown's positioning
+   context spans the full navbar height. This makes `top: calc(100% + 12px)`
+   place the menu fully below the red bottom border with a clean gap, so the
+   first item is never overlapped or clipped. Sibling links and the quote
+   button stay vertically centered at their natural height, and the mobile
+   accordion layout is left untouched. */
+@media (min-width: 1051px) {
+  .navbar.navbar .navbar-inner,
+  .navbar.navbar.navbar-home .navbar-inner {
+    align-items: stretch;
+  }
+
+  .navbar.navbar .main-navigation,
+  .navbar.navbar.navbar-home .main-navigation {
+    align-items: stretch;
+  }
+
+  .navbar.navbar .navigation-links,
+  .navbar.navbar.navbar-home .navigation-links {
+    align-items: center;
+  }
+
+  .navbar.navbar .products-navigation,
+  .navbar.navbar.navbar-home .products-navigation {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  .navbar.navbar .quote-button,
+  .navbar.navbar.navbar-home .quote-button {
+    align-self: center;
   }
 }
 
