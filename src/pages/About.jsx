@@ -22,6 +22,7 @@ import waterImage from "../assets/images/industries/06-water-treatment.jpg";
 import pharmaImage from "../assets/images/industries/07-pharmaceutical.jpg";
 import foodImage from "../assets/images/industries/08-food-processing.jpg";
 import "./About.css";
+import SEO from "../components/SEO.jsx";
 
 const industryImages = {
   "oil-and-gas": oilGasImage,
@@ -63,6 +64,12 @@ const values = [
 
 function About() {
   return (
+    <>
+      <SEO
+        title="About R-Tech Solutions | Rubber Engineering"
+        description="Learn about R-Tech Solutions — specialists in rubber and polymer engineering delivering reliable gaskets, seals and custom-moulded parts for industry."
+        path="/about"
+      />
     <main className="ab2-page">
       <section className="ab2-hero" aria-labelledby="ab2-hero-title">
         <div className="ab2-hero-copy">
@@ -209,6 +216,7 @@ function About() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

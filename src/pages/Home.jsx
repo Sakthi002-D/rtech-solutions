@@ -19,6 +19,8 @@ import bellowsVideo from "../assets/images/product-bellows.mp4.mp4";
 
 import { industries } from "../data/industries";
 
+import SEO from "../components/SEO.jsx";
+
 import "./Home.css";
 
 const heroVideos = [
@@ -165,6 +167,18 @@ function Home() {
   }, [activeVideo]);
 
   return (
+    <>
+      <SEO
+        title="R-Tech Solutions | Rubber & Sealing Solutions"
+        description="R-Tech Solutions engineers precision rubber gaskets, O-rings, hoses, bellows, sheets and custom-moulded sealing components for demanding industrial applications."
+        path="/"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'R-Tech Solutions',
+          url: 'https://www.rtechsolutions.co/',
+        }}
+      />
     <main className="home-page">
 
       {/* =====================================================
@@ -653,6 +667,7 @@ function Home() {
 
 
     </main>
+    </>
   );
 }
 

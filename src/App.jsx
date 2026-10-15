@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer.jsx'
 import Home from './pages/Home.jsx'
@@ -39,6 +40,7 @@ function App() {
 
 
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <div className="site-shell">
         <ScrollToTop />
@@ -62,6 +64,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </HelmetProvider>
   )
 }
 

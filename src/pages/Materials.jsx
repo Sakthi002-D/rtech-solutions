@@ -16,6 +16,7 @@ import washersImage from "../assets/images/product-washers.jpg";
 import hosesImage from "../assets/images/product-hoses.jpg";
 import bellowsImage from "../assets/images/product-bellows.jpg";
 import "./Materials.css";
+import SEO from "../components/SEO.jsx";
 
 const productImages = {
   "rubber-gaskets": gasketsImage,
@@ -74,6 +75,12 @@ function Materials() {
     .filter(Boolean);
 
   return (
+    <>
+      <SEO
+        title="Rubber Materials | R-Tech Solutions"
+        description="Compare rubber materials from R-Tech Solutions — NR, NBR, EPDM, silicone, Viton, neoprene and more — matched to temperature, oils, chemicals and sealing needs."
+        path="/materials"
+      />
     <main className="mt2-page">
       <section className="mt2-hero" aria-labelledby="mt2-hero-title">
         <div className="mt2-hero-copy">
@@ -197,6 +204,7 @@ function Materials() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

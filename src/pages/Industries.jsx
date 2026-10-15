@@ -65,6 +65,7 @@ import bellowsImage from '../assets/images/product-bellows.jpg'
 import sheetsImage from '../assets/images/product-sheets.jpg'
 
 import './Industries.css'
+import SEO from '../components/SEO.jsx'
 
 // Load the four replacement hero images from src/assets/images/industries.
 const industryHeroGallery = Object.entries(
@@ -234,6 +235,12 @@ function Industries() {
 
    return (
 
+      <>
+         <SEO
+            title="Industrial Rubber Solutions | R-Tech Solutions"
+            description="R-Tech Solutions supplies rubber and sealing products for oil and gas, petrochemical, power, automotive, construction, water, pharma and food processing."
+            path="/industries"
+         />
       <main className="in2-page">
 
          <section className="in2-hero" aria-labelledby="in2-hero-title">
@@ -678,6 +685,7 @@ function Industries() {
 
       </main>
 
+      </>
    )
 
 }

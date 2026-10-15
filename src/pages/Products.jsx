@@ -11,6 +11,7 @@ import hosesImage from "../assets/images/product-hoses.jpg";
 import bushesImage from "../assets/images/product-bushes.jpg";
 import bellowsImage from "../assets/images/product-bellows.jpg";
 import "./Products.css";
+import SEO from "../components/SEO.jsx";
 
 const productImages = {
   "rubber-gaskets": gasketsImage,
@@ -25,6 +26,12 @@ const productImages = {
 
 function Products() {
   return (
+    <>
+      <SEO
+        title="Rubber Products & Seals | R-Tech Solutions"
+        description="Browse R-Tech Solutions rubber products: gaskets, O-rings, washers, hoses, bushes, bellows, sheets and custom-moulded components built for sealing performance."
+        path="/products"
+      />
     <main className="pr2-page">
       <section className="pr2-hero" aria-labelledby="pr2-hero-title">
         <div className="pr2-hero-copy">
@@ -126,6 +133,7 @@ function Products() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

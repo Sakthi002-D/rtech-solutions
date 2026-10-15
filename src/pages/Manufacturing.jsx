@@ -29,6 +29,7 @@ import hosesPoster from '../assets/images/product-hoses.jpg'
 import bellowsVideo from '../assets/images/product-bellows.mp4.mp4'
 import bellowsPoster from '../assets/images/product-bellows.jpg'
 import './Manufacturing.css'
+import SEO from '../components/SEO.jsx'
 
 const productIcons = {
   'rubber-gaskets': Layers,
@@ -116,6 +117,12 @@ function Manufacturing() {
   }, [])
 
   return (
+    <>
+      <SEO
+        title="Rubber Manufacturing | R-Tech Solutions"
+        description="Inside R-Tech Solutions rubber manufacturing — material selection, custom moulding, prototyping, production and quality checks for precision sealing parts."
+        path="/manufacturing"
+      />
     <main className="mf-page">
       {/* ================= HERO ================= */}
       <section className="mf-hero" aria-labelledby="mf-hero-title">
@@ -411,6 +418,7 @@ function Manufacturing() {
         </div>
       </section>
     </main>
+    </>
   )
 }
 

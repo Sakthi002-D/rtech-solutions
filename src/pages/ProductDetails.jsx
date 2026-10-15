@@ -10,6 +10,7 @@ import hosesImage from '../assets/images/product-hoses.jpg'
 import bushesImage from '../assets/images/product-bushes.jpg'
 import bellowsImage from '../assets/images/product-bellows.jpg'
 import './ProductDetails.css'
+import SEO from '../components/SEO.jsx'
 
 const productImages = {
   'rubber-gaskets': gasketsImage,
@@ -32,6 +33,12 @@ function ProductDetails() {
 
   if (!product) {
     return (
+      <>
+        <SEO
+          title="Product Not Found | R-Tech Solutions"
+          description="The requested rubber product was not found. Browse R-Tech Solutions gaskets, seals, hoses and custom-moulded components."
+          path="/products"
+        />
       <main className="pd-page">
         <div className="pd-not-found">
           <p className="pd-kicker">Product details</p>
@@ -45,12 +52,19 @@ function ProductDetails() {
           </Link>
         </div>
       </main>
+      </>
     )
   }
 
   const image = productImages[product.slug]
 
   return (
+    <>
+      <SEO
+        title={`${product.name} | R-Tech Solutions`}
+        description={product.shortDescription || `Explore ${product.name} from R-Tech Solutions — engineered rubber and sealing performance for industrial applications.`}
+        path={`/products/${product.slug}`}
+      />
     <main className="pd-page">
       <section className="pd-hero" aria-labelledby="pd-title">
         <div className="pd-hero-copy">
@@ -213,6 +227,7 @@ function ProductDetails() {
         </section>
       </div>
     </main>
+    </>
   )
 }
 

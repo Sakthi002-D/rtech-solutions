@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Check, CircleAlert, CircleCheck, Send } from 'lucide-react'
 import './RequestQuote.css'
+import SEO from '../components/SEO.jsx'
 
 // In local development the Vite dev server proxies /api to the Express
 // backend, so a relative URL works. On Render the frontend is served
@@ -79,6 +80,12 @@ function RequestQuote() {
   }
 
   return (
+    <>
+      <SEO
+        title="Request a Quote | R-Tech Solutions"
+        description="Request a custom quote from R-Tech Solutions for rubber gaskets, seals, hoses and moulded parts — share product, dimensions, material and quantity."
+        path="/request-a-quote"
+      />
     <main className="rq-page">
 
       {/* ================= HERO ================= */}
@@ -298,6 +305,7 @@ function RequestQuote() {
         </div>
       </section>
     </main>
+    </>
   )
 }
 

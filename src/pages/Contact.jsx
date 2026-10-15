@@ -14,6 +14,7 @@ import {
 import { contact, hasEmail, hasPhone } from '../data/contact'
 import facilityImage from '../assets/images/rtech-building.png'
 import './Contact.css'
+import SEO from '../components/SEO.jsx'
 
 // In local development the Vite dev server proxies /api to the Express
 // backend, so a relative URL works. On Render the frontend is served
@@ -95,6 +96,12 @@ function Contact() {
   }
 
   return (
+    <>
+      <SEO
+        title="Contact R-Tech Solutions | Request a Quote"
+        description="Contact R-Tech Solutions for rubber products, custom-moulded parts and sealing support. Share your dimensions and application to request a quote."
+        path="/contact"
+      />
     <main className="ct-page">
       {/* ================= HERO ================= */}
       <section className="ct-hero" aria-labelledby="ct-hero-title">
@@ -377,6 +384,7 @@ function Contact() {
         </div>
       </section>
     </main>
+    </>
   )
 }
 
