@@ -205,6 +205,12 @@
 }
 
 @media (max-width: 1050px) {
+  .navbar.navbar,
+  .navbar.navbar.navbar-home,
+  .navbar.navbar.navbar-home.is-scrolled {
+    background: #ffffff;
+  }
+
   .navbar.navbar .navbar-curve {
     display: none;
   }
@@ -243,6 +249,12 @@
   .navbar.navbar .menu-toggle {
     flex-shrink: 0;
     margin-left: auto;
+  }
+
+  .navbar.navbar .menu-toggle span,
+  .navbar.navbar.navbar-home .menu-toggle span,
+  .navbar.navbar.navbar-home.is-scrolled .menu-toggle span {
+    background: #111315;
   }
 
   .navbar.navbar .products-navigation {
