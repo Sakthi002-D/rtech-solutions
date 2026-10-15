@@ -10,30 +10,11 @@ import Industries from './pages/Industries.jsx'
 import Manufacturing from './pages/Manufacturing.jsx'
 import Contact from './pages/Contact.jsx'
 import RequestQuote from './pages/RequestQuote.jsx'
+import NotFound from './pages/NotFound.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx';
 import Navbar from './components/Navbar.jsx';
 
 import './App.css'
-// Detects a hard browser refresh (F5 / Ctrl+R / browser refresh button) and
-// redirects to the Home page. A client-side navigation (link click or
-// useNavigate) never reports "reload", so this only fires on true page
-// refreshes and never interferes with normal navigation or history
-// traversal. The redirect uses window.location.replace to avoid stacking
-// duplicate history entries.
-function RefreshRedirect() {
-  const isReload = typeof window !== 'undefined' &&
-    typeof performance !== 'undefined' &&
-    typeof performance.getEntriesByType === 'function' &&
-    performance.getEntriesByType('navigation')[0]?.type === 'reload'
-
-  if (isReload) {
-    window.location.replace('/')
-    return null
-  }
-
-  return null
-}
-
 
 function App() {
 
@@ -44,7 +25,6 @@ function App() {
     <BrowserRouter>
       <div className="site-shell">
         <ScrollToTop />
-        <RefreshRedirect />
 
         <Navbar />
         <Routes>
@@ -60,6 +40,7 @@ function App() {
           />
           <Route path="/contact" element={<Contact />} />
           <Route path="/request-a-quote" element={<RequestQuote />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
