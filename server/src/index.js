@@ -49,7 +49,20 @@ setInterval(() => {
 // Reads FRONTEND_URL (e.g. "https://rtech-solutions.onrender.com") and
 // allows browser requests only from that origin. Falls back to the local
 // dev origin during development so the Vite proxy works locally.
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5175'
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://www.rtechsolutions.co'
+
+// ---------- Health (public — registered BEFORE the origin guard) ----------
+// Monitoring (Render health checks, curl, uptime bots) sends no Origin
+// header, so this route must never be subject to the browser-origin check
+// below. Returns only coarse status strings; no credentials or DB details.
+app.get('/api/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1')
+    res.json({ status: 'ok', database: 'up' })
+  } catch {
+    res.status(503).json({ status: 'degraded', database: 'down' })
+  }
+})
 
 app.use((req, res, next) => {
   if (req.method === 'OPTIONS') {
@@ -60,10 +73,12 @@ app.use((req, res, next) => {
     return res.status(204).end()
   }
 
-  // Only allow cross-origin requests from the configured frontend URL.
+  // Only allow cross-origin browser requests from the configured frontend
+  // URL. Same-origin / non-browser requests (no Origin header) are allowed.
   if (
     FRONTEND_URL !== 'http://localhost:5175' &&
-    !req.headers.origin?.startsWith(FRONTEND_URL)
+    req.headers.origin &&
+    !req.headers.origin.startsWith(FRONTEND_URL)
   ) {
     return res.status(403).json({ ok: false, error: 'Forbidden' })
   }
@@ -72,16 +87,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   next()
-})
-
-// ---------- Health ----------
-app.get('/api/health', async (req, res) => {
-  try {
-    await pool.query('SELECT 1')
-    res.json({ status: 'ok', database: 'up' })
-  } catch {
-    res.status(503).json({ status: 'degraded', database: 'down' })
-  }
 })
 
 // ---------- Contact enquiries ----------
