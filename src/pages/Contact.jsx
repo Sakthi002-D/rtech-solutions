@@ -19,7 +19,60 @@ import SEO from '../components/SEO.jsx'
 // In local development the Vite dev server proxies /api to the Express
 // backend, so a relative URL works. On Render the frontend is served
 // separately from the API and VITE_API_URL points at it, so we use that.
-const apiBase = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/` : ''
+//
+// resolveApiBase() also guards against two deployment misconfigurations:
+//  1. VITE_API_URL set to the static-site origin itself (or left empty on a
+//     static host): POST /api/* would return index.html, and response.json()
+//     would throw "Failed to fetch". We detect a non-JSON content-type and
+//     surface a clear configuration error instead.
+//  2. VITE_API_URL with a trailing slash or a pathless host: normalized here
+//     so the final URL is always "<origin>/api/...".
+function resolveApiBase() {
+  const raw = (import.meta.env.VITE_API_URL || '').toString().trim()
+  if (!raw) return ''
+  return raw.replace(/\/+$/, '')
+}
+
+const apiBase = resolveApiBase()
+
+async function postJson(path, payload) {
+  const url = `${apiBase}${path}`
+  let response
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+  } catch {
+    // Network-level failure: DNS, CORS block, offline, or unreachable host.
+    throw new Error(
+      'Could not reach the server. Please check your connection and try again.',
+    )
+  }
+
+  const contentType = response.headers.get('content-type') || ''
+  if (!contentType.includes('application/json')) {
+    // The request reached *something* (often the static host's SPA fallback
+    // serving index.html for /api/*), but not the Express API. This is a
+    // deployment configuration issue, not a user input error.
+    throw new Error(
+      'The enquiry service is not configured for this site yet. Please try again later or contact us directly.',
+    )
+  }
+
+  const body = await response.json().catch(() => null)
+
+  if (!response.ok) {
+    throw new Error(
+      body?.error ||
+        (Array.isArray(body?.errors) && body.errors[0]) ||
+        'Something went wrong. Please try again shortly.',
+    )
+  }
+
+  return body
+}
 
 const enquiryTypes = [
   'General enquiry',
@@ -68,20 +121,7 @@ function Contact() {
     setErrorMessage('')
 
     try {
-      const response = await fetch(apiBase + 'api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      const body = await response.json().catch(() => null)
-
-      if (!response.ok) {
-        throw new Error(
-          body?.error ||
-            (Array.isArray(body?.errors) && body.errors[0]) ||
-            'Something went wrong. Please try again shortly.',
-        )
-      }
+      await postJson('/api/contact', payload)
 
       form.reset()
       setStatus('success')
